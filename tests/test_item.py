@@ -23,4 +23,16 @@ def test_all_items(testing_data):
 def test_init_error():
     """ Тест на проверку возникновения исключения при передаче некорректных типов данных в конструктор """
     with pytest.raises(TypeError):
-        Item(123, "abc", 1.0)
+        Item(123, 'abc', 1.0)
+
+
+def test_calculate_total_price(testing_data):
+    """ Тест на проверку корректности выводимого значения при вызове calculate_total_price  """
+    assert testing_data.calculate_total_price() == 10.0
+
+
+def test_apply_discount(testing_data):
+    """ Тест на применение скидки при вызове self.price после вызова apply_discount """
+    Item.pay_rate = 0.8
+    testing_data.apply_discount()
+    assert testing_data.price == 0.8
