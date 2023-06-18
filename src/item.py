@@ -13,6 +13,12 @@ class Item:
         :param price: Цена за единицу товара.
         :param quantity: Количество товара в магазине.
         """
+        if not isinstance(name, str):
+            raise TypeError('Название товара должно быть строкой')
+        elif not isinstance(price, (int, float)):
+            raise TypeError('Значение стоимости должно быть числом')
+        elif not isinstance(quantity, int):
+            raise TypeError('Количество товара должно быть указано целым числом')
         self.name = name
         self.price = price
         self.quantity = quantity
