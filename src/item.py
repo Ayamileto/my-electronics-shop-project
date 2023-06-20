@@ -5,6 +5,7 @@ class Item:
     pay_rate = 1.0
     all = []
 
+
     def __init__(self, name: str, price: float, quantity: int) -> None:
         """
         Создание экземпляра класса item.
@@ -18,12 +19,13 @@ class Item:
         elif not isinstance(price, (int, float)):
             raise TypeError('Значение стоимости должно быть числом')
         elif not isinstance(quantity, int):
-            raise TypeError('Количество товара должно быть указано целым числом')
+            raise TypeError('Количество товара должно быть целым числом')
         self.name = name
         self.price = price
         self.quantity = quantity
 
         Item.all.append(self)
+
 
     def calculate_total_price(self) -> float:
         """
@@ -33,6 +35,7 @@ class Item:
         """
         total_price = self.price * self.quantity
         return total_price
+
 
     def apply_discount(self) -> None:
         """
