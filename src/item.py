@@ -20,12 +20,24 @@ class Item:
             raise TypeError('Значение стоимости должно быть числом')
         elif not isinstance(quantity, int):
             raise TypeError('Количество товара должно быть целым числом')
-        self.name = name
+        self.__name = name
         self.price = price
         self.quantity = quantity
 
         Item.all.append(self)
 
+        @property
+        def __name(self):
+            return f'{self.__name}'
+
+        @__name.setter
+        def __name(self, value):
+            """ Метод проверяет, что длина наименования товара не больше 10 символов.
+            В противном случае обрезает строку (оставит первые 10 символов)."""
+            if len(value) > 10:
+                self._name = value[:10]
+            else:
+                self._name = value
 
     def calculate_total_price(self) -> float:
         """
