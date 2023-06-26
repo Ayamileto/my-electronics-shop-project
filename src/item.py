@@ -35,13 +35,15 @@ class Item:
 
     @name.setter
     def name(self, value):
-        """ Метод проверяет, что длина наименования товара не больше 10 символов.
+        """ Метод проверяет, что длина наименования
+        товара не больше 10 символов.
         В противном случае обрезает строку (оставит первые 10 символов)."""
         if len(value) > 10:
             print(Exception('Длина наименования товара превышает 10 символов'))
             self.__name = value[:10]
         else:
             self.__name = value
+
 
     def calculate_total_price(self) -> float:
         """
@@ -58,11 +60,11 @@ class Item:
         """
         self.price *= self.pay_rate
 
-
     @classmethod
     def instantiate_from_csv(cls):
         """
-        Класс-метод, инициализирующий экземпляры класса Item данными из файла src/items.csv
+        Класс-метод, инициализирующий экземпляры класса
+        Item данными из файла src items.csv
         """
         src_path = os.path.dirname(__file__)
         src_filename = "items.csv"
@@ -76,10 +78,12 @@ class Item:
                 price = cls.string_to_number(item['price'])
                 quantity = cls.string_to_number(item['quantity'])
                 cls(name, price, quantity)
+                print(item)
+
 
     @staticmethod
     def string_to_number(string):
-        """ Статический метод, возвращающий целое число из числа-строки """
+        """ Статический метод, возвращающий целое число из числа - строки """
         if '.' in string:
             number = float(string)
             return int(number)
@@ -87,4 +91,3 @@ class Item:
             return int(string)
         else:
             raise ValueError('Невозможно преобразовать строку в число.')
-
