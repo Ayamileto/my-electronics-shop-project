@@ -78,7 +78,6 @@ class Item:
                 price = cls.string_to_number(item['price'])
                 quantity = cls.string_to_number(item['quantity'])
                 cls(name, price, quantity)
-                print(item)
 
 
     @staticmethod
