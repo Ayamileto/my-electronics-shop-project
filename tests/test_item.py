@@ -36,3 +36,13 @@ def test_apply_discount(testing_data):
     Item.pay_rate = 0.8
     testing_data.apply_discount()
     assert testing_data.price == 0.8
+
+
+def test_name(testing_data):
+    """
+    Тест на выполнение условий вывода наименования товара в зависимости от количества символов
+    """
+    testing_data.name = 'Планшет'
+    assert testing_data.name == 'Планшет'
+    testing_data.name = 'Квадрокоптер'
+    assert testing_data.name == 'Квадрокопт'
