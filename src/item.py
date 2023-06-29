@@ -29,9 +29,23 @@ class Item:
 
         Item.all.append(self)
 
+
+    def __repr__(self):
+        """
+        Возвращает строку для отладки в формате
+        ClassName(object_name, object_price, object_quantity
+        """
+        return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity})"
+
+
+    def __str__(self):
+        """ Возвращает наименование товара """
+        return self.name
+
     @property
     def name(self):
         return f'{self.__name}'
+
 
     @name.setter
     def name(self, value):
