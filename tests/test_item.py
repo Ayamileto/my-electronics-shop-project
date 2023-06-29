@@ -77,3 +77,21 @@ def test_string_to_number(testing_str, results):
     else:
         with pytest.raises(ValueError):
             Item.string_to_number(testing_str)
+
+
+def test_repr(testing_data):
+    """
+    Тест проверяет корректность вывода строки для отладки в формате
+    "ClassName('object_name', object_price, object_quantity)"
+    """
+    item_test = testing_data
+    assert repr(item_test) == "Item('apple', 1.0, 10)"
+
+
+def test_str(testing_data):
+    """
+    Тест проверяет корректность вывода метода str
+    в формате 'object_name'
+    """
+    item_test = testing_data
+    assert str(item_test) == 'apple'
