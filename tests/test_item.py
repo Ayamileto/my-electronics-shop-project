@@ -84,8 +84,7 @@ def test_repr(testing_data):
     Тест проверяет корректность вывода строки для отладки в формате
     "ClassName('object_name', object_price, object_quantity)"
     """
-    item_test = testing_data
-    assert repr(item_test) == "Item('apple', 1.0, 10)"
+    assert repr(testing_data) == "Item('apple', 1.0, 10)"
 
 
 def test_str(testing_data):
