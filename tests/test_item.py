@@ -1,5 +1,8 @@
+from unittest import result
+
 import pytest
 from src.item import Item
+from src.phone import Phone
 
 
 @pytest.fixture
@@ -92,5 +95,29 @@ def test_str(testing_data):
     Тест проверяет корректность вывода метода str
     в формате 'object_name'
     """
-    item_test = testing_data
-    assert str(item_test) == 'apple'
+    assert str(testing_data) == 'apple'
+
+@pytest.mark.parametrize('quantity1, quantity2, result', [
+    (1, 4, 5),
+    (100, 66, 166),
+    (0, 5, 5),
+])
+def test_add(quantity1, quantity2, result):
+    """ Тест проверяет возможность складывать количество товаров разных классов """
+    class Test:
+        """ Тестовый класс, который не наследуется от класса Item """
+        def __init__(self, quantity):
+            self.quantity = quantity
+
+    test1 = Test(quantity2)
+    item1 = Item('apple', 100, quantity1)
+    phone1 = Phone('Samsung', 200, quantity2, 6)
+
+    assert item1 + phone1 == result
+    assert item1 + item1 == quantity1 * 2
+    assert phone1 + phone1 == quantity2 * 2
+    with pytest.raises(ValueError):
+        phone1 + test1
+        item1 + test1
+        item1 + 10000
+        phone1 + 123
