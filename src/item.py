@@ -42,6 +42,17 @@ class Item:
         """ Возвращает наименование товара """
         return self.name
 
+
+    def __add__(self, other):
+        """
+        Реализует возможность сложения экземпляров класса `Item` и его наследников
+        (сложение по количеству товара в магазине)
+        """
+        if not isinstance(other, Item):
+            raise ValueError
+        return self.quantity + other.quantity
+
+
     @property
     def name(self):
         return f'{self.__name}'
