@@ -7,4 +7,6 @@ class LanguageMixin:
 
 class KeyBoard(Item, LanguageMixin):
     """ Класс для товара 'клавиатура' """
-    pass
+    def __init__(self, name, price, quantity):
+        super().__init__(name, price, quantity)
+        LanguageMixin.__init__(self)
