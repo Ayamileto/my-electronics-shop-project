@@ -21,3 +21,12 @@ def test_change_language(testing_data):
     """
     testing_data.change_lang()
     assert testing_data.language == "RU"
+
+
+def test_invalid_language_assignment(testing_data):
+    """
+    Проверка на смену незапрограммированного языка
+    """
+    with pytest.raises(AttributeError):
+        testing_data.language = 'CH'
+        testing_data.language = 'BY'
